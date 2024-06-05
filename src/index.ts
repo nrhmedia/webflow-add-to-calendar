@@ -4,12 +4,15 @@ const startDateElement = document.getElementById('start-date');
 const endDateElement = document.getElementById('end-date');
 const locationElement = document.getElementById('add-to-calendar-date');
 
-function isValidDate(dateStr) {
+function isValidDate(dateStr: string) {
   return !isNaN(new Date(dateStr).getDate());
 }
 
-function isValidTime(timeElement) {
-  return timeElement && timeElement.textContent.trim().includes(':');
+function isValidTime(timeElement: HTMLElement | null): boolean {
+  if (!timeElement) return false;
+  if (!timeElement.textContent) return false;
+
+  return timeElement.textContent.trim().includes(':');
 }
 
 if (
